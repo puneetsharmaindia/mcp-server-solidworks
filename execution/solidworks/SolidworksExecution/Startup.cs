@@ -21,6 +21,9 @@ namespace SolidworksExecution
             jsonSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             jsonSettings.NullValueHandling = NullValueHandling.Ignore;
 
+            // Remove the XML formatter so that the browser gets JSON instead of crashing
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+
             app.UseWebApi(config);
         }
     }
